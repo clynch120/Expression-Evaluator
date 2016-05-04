@@ -6,10 +6,17 @@ package valid.expression.tool;
  */
 public class Evaluator 
 {
-	
-	public static LLStack ll = new LLStack();
-	//public static ArrayStack ll = new ArrayStack();
-	public static boolean isValad(String input)
+	/**
+	 * 
+	 * @param ll 
+	 * 		takes Array or linked list stack
+	 * @param input
+	 * 		takes string to evaluate
+	 * @return
+	 * 		returns true if expression is valid
+	 * 		returns false if expression is not valid
+	 */
+	public static boolean isValad(Stack ll, String input)
 	{
 		for (int i = 0; i < input.length(); i++)
 		{
@@ -20,10 +27,10 @@ public class Evaluator
 				return false;
 			}
 			if (input.charAt(i) == '(') ll.push("(");
-			else if (input.charAt(i) == ')' && ll.size > 0) ll.pop();
+			else if (input.charAt(i) == ')' && ll.size() > 0) ll.pop();
 			else return false;
 		}
-		if (ll.size == 0) return true;
+		if (ll.size() == 0) return true;
 		else return false;
 	}
 }
